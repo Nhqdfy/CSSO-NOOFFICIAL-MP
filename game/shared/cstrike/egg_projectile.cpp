@@ -49,6 +49,11 @@ END_DATADESC()
 // How hard a direct egg hit knocks the victim flying (velocity multiplier).
 ConVar sv_egg_knockback( "sv_egg_knockback", "0.5", FCVAR_REPLICATED, "How hard a direct egg hit knocks the victim flying (velocity multiplier)." );
 
+// Explosive egg blast parameters. All can be overridden via server.cfg / console.
+ConVar sv_egg_blast_damage( "sv_egg_blast_damage", "40", FCVAR_REPLICATED, "Explosive egg: damage dealt by the blast." );
+ConVar sv_egg_blast_radius( "sv_egg_blast_radius", "220", FCVAR_REPLICATED, "Explosive egg: blast radius (also drives the screen shake)." );
+ConVar sv_egg_blast_knockback( "sv_egg_blast_knockback", "1.0", FCVAR_REPLICATED, "Explosive egg: knockback multiplier applied to enemies caught in the blast (1.0 = default)." );
+
 // --------------------------------------------------------------------------------------------------- //
 // CEggProjectile implementation.
 // --------------------------------------------------------------------------------------------------- //
@@ -164,12 +169,21 @@ void CEggProjectile::ResolveFlyCollisionCustom( trace_t &trace, Vector &vecVeloc
 }
 
 //--------------------------------------------------------------------------------------------------------
+// The blast radius drives the screen shake, matching sv_egg_blast_radius.
+//--------------------------------------------------------------------------------------------------------
+float CEggProjectile::GetShakeRadius( void )
+{
+	return sv_egg_blast_radius.GetFloat();
+}
+
+//--------------------------------------------------------------------------------------------------------
 // Mini-explosion: small radius damage + knocks nearby enemies back.
 //--------------------------------------------------------------------------------------------------------
 void CEggProjectile::BlastEgg()
 {
-	const float flRadius = 220.0f;
-	const float flDamage = 40.0f;
+	const float flRadius = sv_egg_blast_radius.GetFloat();
+	const float flDamage = sv_egg_blast_damage.GetFloat();
+	const float flKnockbackScale = sv_egg_blast_knockback.GetFloat();
 	Vector vecOrigin = GetAbsOrigin();
 
 	// Manual blast knockback (CS players are not pushed by RadiusDamage forces).
@@ -188,7 +202,7 @@ void CEggProjectile::BlastEgg()
 			VectorNormalize( vecDelta );
 
 			float flFalloff = 1.0f - ( flDist / flRadius );
-			pPlayer->VelocityPunch( vecDelta * ( 200.0f + 550.0f * flFalloff ) );
+			pPlayer->VelocityPunch( vecDelta * ( ( 200.0f + 550.0f * flFalloff ) * flKnockbackScale ) );
 		}
 	}
 

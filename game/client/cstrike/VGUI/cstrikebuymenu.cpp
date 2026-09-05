@@ -1445,7 +1445,10 @@ void CCSBuyMenu::ShowCategory( KeyValues* kvCategory )
 
 			pButton->SetName( pszName );
 			pButton->SetDescription( pszDescription );
-			pButton->SetHotkey( szHotkey[0] );
+			if ( i <= 9 )
+				pButton->SetHotkey( szHotkey[0] );
+			else
+				pButton->SetHotkey( '\0' );	// no hotkey for slots > 9 (avoids duplicating '1')
 			pButton->SetPrice( iPrice );
 			pButton->SetIcon( pszIcon );
 			pButton->SetWeaponID( nWeaponID );

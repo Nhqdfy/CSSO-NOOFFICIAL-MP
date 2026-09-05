@@ -1,0 +1,289 @@
+"BuyMenuConfig"
+{
+	"PistolMenu"
+	{
+		"glock"
+		{
+			"name"			"#CStrike_WPNHUD_Glock18"
+			"icon"			"materials/vgui/weapons/svg/glock.svg"
+			"price"			"200"
+			"team"			"2"
+		}
+		"hkp2000"
+		{
+			"name"			"#CStrike_WPNHUD_HKP2000"
+			"icon"			"materials/vgui/weapons/svg/hkp2000.svg"
+			"price"			"200"
+			"team"			"3"
+		}
+		"elite"
+		{
+			"name"			"#CStrike_WPNHUD_Elites"
+			"icon"			"materials/vgui/weapons/svg/elite.svg"
+			"price"			"300"
+		}
+		"p250"
+		{
+			"name"			"#CStrike_WPNHUD_P250"
+			"icon"			"materials/vgui/weapons/svg/p250.svg"
+			"price"			"300"
+		}
+		"tec9"
+		{
+			"name"			"#CStrike_WPNHUD_Tec9"
+			"icon"			"materials/vgui/weapons/svg/tec9.svg"
+			"price"			"500"
+			"team"			"2"
+		}
+		"fiveseven"
+		{
+			"name"			"#CStrike_WPNHUD_FiveSeven"
+			"icon"			"materials/vgui/weapons/svg/fiveseven.svg"
+			"price"			"500"
+			"team"			"3"
+		}
+		"deagle"
+		{
+			"name"			"#CStrike_WPNHUD_DesertEagle"
+			"icon"			"materials/vgui/weapons/svg/deagle.svg"
+			"price"			"700"
+		}
+	}
+	"HeavyMenu"
+	{
+		"nova"
+		{
+			"name"			"#CStrike_WPNHUD_Nova"
+			"icon"			"materials/vgui/weapons/svg/nova.svg"
+			"price"			"1050"
+		}
+		"xm1014"
+		{
+			"name"			"#CStrike_WPNHUD_XM1014"
+			"icon"			"materials/vgui/weapons/svg/xm1014.svg"
+			"price"			"2000"
+		}
+		"sawedoff"
+		{
+			"name"			"#CStrike_WPNHUD_SawedOff"
+			"icon"			"materials/vgui/weapons/svg/sawedoff.svg"
+			"price"			"1100"
+			"team"			"2"
+		}
+		"mag7"
+		{
+			"name"			"#CStrike_WPNHUD_MAG7"
+			"icon"			"materials/vgui/weapons/svg/mag7.svg"
+			"price"			"1300"
+			"team"			"3"
+		}
+		"m249"
+		{
+			"name"			"#CStrike_WPNHUD_M249"
+			"icon"			"materials/vgui/weapons/svg/m249.svg"
+			"price"			"5200"
+		}
+		"negev"
+		{
+			"name"			"#CStrike_WPNHUD_Negev"
+			"icon"			"materials/vgui/weapons/svg/negev.svg"
+			"price"			"1700"
+		}
+	}
+	"SMGMenu"
+	{
+		"mac10"
+		{
+			"name"			"#CStrike_WPNHUD_MAC10"
+			"icon"			"materials/vgui/weapons/svg/mac10.svg"
+			"price"			"1050"
+			"team"			"2"
+		}
+		"mp9"
+		{
+			"name"			"#CStrike_WPNHUD_MP9"
+			"icon"			"materials/vgui/weapons/svg/mp9.svg"
+			"price"			"1250"
+			"team"			"3"
+		}
+		"mp7"
+		{
+			"name"			"#CStrike_WPNHUD_MP7"
+			"icon"			"materials/vgui/weapons/svg/mp7.svg"
+			"price"			"1500"
+		}
+		"ump45"
+		{
+			"name"			"#CStrike_WPNHUD_UMP45"
+			"icon"			"materials/vgui/weapons/svg/ump45.svg"
+			"price"			"1200"
+		}
+		"p90"
+		{
+			"name"			"#CStrike_WPNHUD_P90"
+			"icon"			"materials/vgui/weapons/svg/p90.svg"
+			"price"			"2350"
+		}
+		"bizon"
+		{
+			"name"			"#CStrike_WPNHUD_Bizon"
+			"icon"			"materials/vgui/weapons/svg/bizon.svg"
+			"price"			"1400"
+		}
+	}
+	"RifleMenu"
+	{
+		"galilar"
+		{
+			"name"			"#CStrike_WPNHUD_GalilAR"
+			"icon"			"materials/vgui/weapons/svg/galilar.svg"
+			"price"			"1800"
+			"team"			"2"
+		}
+		"famas"
+		{
+			"name"			"#CStrike_WPNHUD_FAMAS"
+			"icon"			"materials/vgui/weapons/svg/famas.svg"
+			"price"			"2050"
+			"team"			"3"
+		}
+		"ak47"
+		{
+			"name"			"#CStrike_WPNHUD_AK47"
+			"icon"			"materials/vgui/weapons/svg/ak47.svg"
+			"price"			"2700"
+			"team"			"2"
+		}
+		"m4a4"
+		{
+			"name"			"#CStrike_WPNHUD_M4A4"
+			"icon"			"materials/vgui/weapons/svg/m4a4.svg"
+			"price"			"3100"
+			"team"			"3"
+		}
+		"ssg08"
+		{
+			"name"			"#CStrike_WPNHUD_SSG08"
+			"icon"			"materials/vgui/weapons/svg/ssg08.svg"
+			"price"			"1700"
+		}
+		"sg556"
+		{
+			"name"			"#CStrike_WPNHUD_SG556"
+			"icon"			"materials/vgui/weapons/svg/sg556.svg"
+			"price"			"3000"
+			"team"			"2"
+		}
+		"aug"
+		{
+			"name"			"#CStrike_WPNHUD_AUG"
+			"icon"			"materials/vgui/weapons/svg/aug.svg"
+			"price"			"3300"
+			"team"			"3"
+		}
+		"awp"
+		{
+			"name"			"#CStrike_WPNHUD_AWP"
+			"icon"			"materials/vgui/weapons/svg/awp.svg"
+			"price"			"4750"
+		}
+		"g3sg1"
+		{
+			"name"			"#CStrike_WPNHUD_G3SG1"
+			"icon"			"materials/vgui/weapons/svg/g3sg1.svg"
+			"price"			"5000"
+			"team"			"2"
+		}
+		"scar20"
+		{
+			"name"			"#CStrike_WPNHUD_SCAR20"
+			"icon"			"materials/vgui/weapons/svg/scar20.svg"
+			"price"			"5000"
+			"team"			"3"
+		}
+		"egg"
+		{
+			"name"			"蛋发射器"
+			"description"	"全自动发射鸡蛋。直接命中把敌人击飞;右键切换爆炸/击退模式。"
+			"icon"			"materials/vgui/weapons/svg/egg.svg"
+			"price"			"8000"
+		}
+	}
+	"EquipmentMenu"
+	{
+		"kevlar"
+		{
+			"name"			"#CStrike_WPNHUD_Kevlar"
+			"description"	"#CStrike_Item_Desc_Vest"
+			"icon"			"materials/vgui/weapons/svg/kevlar.svg"
+			"price"			"650"
+		}
+		"assaultsuit"
+		{
+			"name"			"#CStrike_WPNHUD_AssaultSuit"
+			"description"	"#CStrike_Item_Desc_VestHelm"
+			"icon"			"materials/vgui/weapons/svg/assaultsuit.svg"
+			"price"			"1000"
+		}
+		"taser"
+		{
+			"name"			"#CStrike_WPNHUD_Taser"
+			"icon"			"materials/vgui/weapons/svg/taser.svg"
+			"price"			"200"
+		}
+		"defuser"
+		{
+			"name"			"#CStrike_WPNHUD_Defuser"
+			"icon"			"materials/vgui/hud/svg/defuser.svg"
+			"price"			"400"
+			"team"			"3"
+			"de_cs_only"	"1"
+		}
+		"nvgs"
+		{
+			"name"			"#CStrike_WPNHUD_NightVision"
+			"price"			"1250"
+		}
+	}
+	"GrenadeMenu"
+	{
+		"molotov"
+		{
+			"name"			"#CStrike_WPNHUD_Molotov"
+			"icon"			"materials/vgui/weapons/svg/molotov.svg"
+			"price"			"400"
+			"team"			"2"
+		}
+		"incgrenade"
+		{
+			"name"			"#CStrike_WPNHUD_IncGrenade"
+			"icon"			"materials/vgui/weapons/svg/incgrenade.svg"
+			"price"			"600"
+			"team"			"3"
+		}
+		"decoy"
+		{
+			"name"			"#CStrike_WPNHUD_Decoy"
+			"icon"			"materials/vgui/weapons/svg/decoy.svg"
+			"price"			"50"
+		}
+		"flashbang"
+		{
+			"name"			"#CStrike_WPNHUD_Flashbang"
+			"icon"			"materials/vgui/weapons/svg/flashbang.svg"
+			"price"			"200"
+		}
+		"hegrenade"
+		{
+			"name"			"#CStrike_WPNHUD_HE_Grenade"
+			"icon"			"materials/vgui/weapons/svg/hegrenade.svg"
+			"price"			"300"
+		}
+		"smokegrenade"
+		{
+			"name"			"#CStrike_WPNHUD_Smoke_Grenade"
+			"icon"			"materials/vgui/weapons/svg/smokegrenade.svg"
+			"price"			"300"
+		}
+	}
+}

@@ -3,7 +3,7 @@ WeaponData
 	"MaxPlayerSpeed"			"245"
 	"WeaponType"				"Rifle"
 	"FullAuto"					1
-	"WeaponPrice"				"0"
+	"WeaponPrice"				"8000"
 	"WeaponArmorRatio"			"1.0"
 	"CrosshairMinDistance"		"8"
 	"CrosshairDeltaDistance"	"3"

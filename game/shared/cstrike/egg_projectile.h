@@ -39,7 +39,7 @@ public:
 
 	// Soft little blast, not a screen-shaking HE.
 	virtual float GetShakeAmplitude( void ) { return 2.0f; }
-	virtual float GetShakeRadius( void ) { return 220.0f; }
+	virtual float GetShakeRadius( void );	// implemented in egg_projectile.cpp, tied to sv_egg_blast_radius
 
 	// Break on any impact (knocking hit enemies flying).
 	virtual void ResolveFlyCollisionCustom( trace_t &trace, Vector &vecVelocity );
