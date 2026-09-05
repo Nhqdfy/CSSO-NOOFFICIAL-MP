@@ -37,10 +37,18 @@ public:
 	virtual void Precache( void );
 	virtual void Detonate( void );
 
+	// Soft little blast, not a screen-shaking HE.
+	virtual float GetShakeAmplitude( void ) { return 2.0f; }
+	virtual float GetShakeRadius( void ) { return 220.0f; }
+
 	// Break on any impact (knocking hit enemies flying).
 	virtual void ResolveFlyCollisionCustom( trace_t &trace, Vector &vecVelocity );
 
+	// Sets whether this egg explodes on impact (false = normal knockback egg).
+	void SetExplosive( bool bExplosive ) { m_bExplosive = bExplosive; }
+
 	void EggThink( void );
+	void BlastEgg( void );
 
 	static CEggProjectile* Create(
 		const Vector &position,
@@ -51,6 +59,7 @@ public:
 
 private:
 	float m_flEggDieTime;
+	bool m_bExplosive;
 };
 
 #endif // GAME_DLL

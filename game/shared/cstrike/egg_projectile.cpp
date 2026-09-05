@@ -17,6 +17,7 @@
 #else
 
 	#include "sendproxy.h"
+	#include "player.h"
 	#include "cs_player.h"
 
 #endif
@@ -75,6 +76,7 @@ CEggProjectile* CEggProjectile::Create(
 
 	// Failsafe: if it never hits anything, quietly despawn after a while.
 	pEgg->m_flEggDieTime = gpGlobals->curtime + 8.0f;
+	pEgg->m_bExplosive = false;
 	pEgg->SetThink( &CEggProjectile::EggThink );
 	pEgg->SetNextThink( gpGlobals->curtime + 0.1f );
 
@@ -94,8 +96,6 @@ void CEggProjectile::Spawn()
 void CEggProjectile::Precache()
 {
 	PrecacheModel( EGG_MODEL );
-
-	PrecacheScriptSound( "Flashbang.Explode" );
 
 	BaseClass::Precache();
 }
@@ -124,8 +124,9 @@ void CEggProjectile::EggThink()
 }
 
 //--------------------------------------------------------------------------------------------------------
-// The egg breaks on whatever it touches. If that's an enemy player, they get
-// launched first.
+// The egg breaks on whatever it touches.
+//  - Normal egg: knocks an enemy player flying on a direct hit, then breaks.
+//  - Explosive egg: mini-blast on any impact (damage + knockback in a radius).
 //--------------------------------------------------------------------------------------------------------
 void CEggProjectile::ResolveFlyCollisionCustom( trace_t &trace, Vector &vecVelocity )
 {
@@ -135,7 +136,13 @@ void CEggProjectile::ResolveFlyCollisionCustom( trace_t &trace, Vector &vecVeloc
 	if ( pEntity && pEntity == GetThrower() )
 		return;
 
-	// Direct hit on an enemy player: knock them flying!
+	if ( m_bExplosive )
+	{
+		BlastEgg();
+		return;
+	}
+
+	// Normal egg: only a direct hit on an enemy player knocks them flying.
 	if ( pEntity && pEntity->IsPlayer() )
 	{
 		CCSPlayer *pVictim = ToCSPlayer( pEntity );
@@ -152,15 +159,57 @@ void CEggProjectile::ResolveFlyCollisionCustom( trace_t &trace, Vector &vecVeloc
 		}
 	}
 
-	// The egg broke. Break it.
+	// Break quietly (no loud splat so you don't get a wall of noise at full-auto).
 	Detonate();
+}
+
+//--------------------------------------------------------------------------------------------------------
+// Mini-explosion: small radius damage + knocks nearby enemies back.
+//--------------------------------------------------------------------------------------------------------
+void CEggProjectile::BlastEgg()
+{
+	const float flRadius = 220.0f;
+	const float flDamage = 40.0f;
+	Vector vecOrigin = GetAbsOrigin();
+
+	// Manual blast knockback (CS players are not pushed by RadiusDamage forces).
+	for ( int i = 1; i <= gpGlobals->maxClients; i++ )
+	{
+		CCSPlayer *pPlayer = ToCSPlayer( UTIL_PlayerByIndex( i ) );
+		if ( !pPlayer || !pPlayer->IsAlive() || pPlayer->GetTeamNumber() == GetTeamNumber() )
+			continue;
+
+		Vector vecDelta = pPlayer->GetAbsOrigin() - vecOrigin;
+		vecDelta.z = 0.0f;
+		float flDist = vecDelta.Length();
+		if ( flDist < flRadius )
+		{
+			vecDelta.z = 0.5f;	// a bit of pop
+			VectorNormalize( vecDelta );
+
+			float flFalloff = 1.0f - ( flDist / flRadius );
+			pPlayer->VelocityPunch( vecDelta * ( 200.0f + 550.0f * flFalloff ) );
+		}
+	}
+
+	// Small AoE damage + explosion effect (CBaseGrenade::Explode removes the egg).
+	m_flDamage = flDamage;
+	m_DmgRadius = flRadius;
+
+	trace_t tr;
+	Vector vecSpot = vecOrigin + Vector( 0, 0, 8 );
+	UTIL_TraceLine( vecSpot, vecSpot + Vector( 0, 0, -32 ), MASK_SHOT_HULL, this, COLLISION_GROUP_NONE, &tr );
+	if ( tr.startsolid )
+	{
+		UTIL_TraceLine( vecOrigin, vecOrigin + Vector( 0, 0, -32 ), MASK_SHOT_HULL, this, COLLISION_GROUP_NONE, &tr );
+	}
+
+	Explode( &tr, DMG_BLAST );
 }
 
 void CEggProjectile::Detonate()
 {
-	// "splat" - soft impact feedback
-	EmitSound( "Flashbang.Explode" );
-
+	// Quiet break: the egg just vanishes.
 	SetThink( &CBaseEntity::SUB_Remove );
 	SetNextThink( gpGlobals->curtime + 0.05f );
 	SetTouch( NULL );

@@ -28,15 +28,20 @@ public:
 	DECLARE_NETWORKCLASS();
 	DECLARE_PREDICTABLE();
 
-	CEggGrenade() {}
+	CEggGrenade() { m_bEggExplosive = false; }
 
 	virtual CSWeaponID GetCSWeaponID( void ) const { return WEAPON_EGG; }
 
 	// Hold down fire to keep launching eggs.
 	virtual void PrimaryAttack();
 
+	// Right mouse toggles between normal eggs and explosive eggs.
+	virtual void SecondaryAttack();
+
 private:
 	CEggGrenade( const CEggGrenade& );
+
+	bool m_bEggExplosive;	// false = normal egg (knockback), true = explosive egg (mini-boom)
 };
 
 #endif // WEAPON_EGG_H

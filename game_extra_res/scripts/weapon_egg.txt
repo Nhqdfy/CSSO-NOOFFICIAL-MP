@@ -30,6 +30,7 @@ WeaponData
 	"description"		"Full-auto egg launcher. Eggs knock people flying. Totally harmless. Probably."
 	"viewmodel"			"models/weapons/v_rif_ak47.mdl"
 	"playermodel"			"models/weapons/w_rif_ak47.mdl"
+	"magazine_model"		"models/weapons/w_rif_ak47_mag.mdl"
 
 	"anim_prefix"			"anim"
 	"bucket"			"0"
@@ -47,7 +48,7 @@ WeaponData
 	// Sounds for the weapon.
 	SoundData
 	{
-		"single_shot"		"Weapon_AK47.Single"
+		"single_shot"		"Weapon_M4A1.SilencedSingle"
 		"nearlyempty"		"Default.NearlyEmpty"
 	}
 

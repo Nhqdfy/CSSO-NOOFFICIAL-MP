@@ -92,11 +92,39 @@ void CEggGrenade::PrimaryAttack()
 		Vector vecVel = vForward * EGG_LAUNCH_SPEED + pPlayer->GetAbsVelocity() * 0.5f;
 		AngularImpulse angSpin( 300, random->RandomInt( -900, 900 ), 0 );
 
-		CEggProjectile::Create( vecSrc, angAim, vecVel, angSpin, pPlayer );
+		CEggProjectile *pEgg = CEggProjectile::Create( vecSrc, angAim, vecVel, angSpin, pPlayer );
+		if ( pEgg )
+		{
+			pEgg->SetExplosive( m_bEggExplosive );
+		}
 	}
 #endif
 
 	// schedule the next shot so holding the button auto-fires
 	m_flNextPrimaryAttack = m_flNextSecondaryAttack = gpGlobals->curtime + flCycleTime;
 	SetWeaponIdleTime( gpGlobals->curtime + GetCSWpnData().m_flTimeToIdleAfterFire );
+}
+
+//-----------------------------------------------------------------------------
+// Purpose: Right mouse toggles the fire mode: normal eggs (knockback on direct
+// hit) <-> explosive eggs (mini-boom on any impact).
+//-----------------------------------------------------------------------------
+void CEggGrenade::SecondaryAttack()
+{
+	CCSPlayer *pPlayer = GetPlayerOwner();
+	if ( !pPlayer )
+		return;
+
+#ifndef CLIENT_DLL
+	m_bEggExplosive = !m_bEggExplosive;
+
+	if ( m_bEggExplosive )
+		pPlayer->HintMessage( "Egg mode: EXPLOSIVE - eggs blow up on impact", false );
+	else
+		pPlayer->HintMessage( "Egg mode: NORMAL - eggs knock enemies flying", false );
+
+	pPlayer->EmitSound( "Weapon.AutoSemiAutoSwitch" );
+#endif
+
+	m_flNextSecondaryAttack = gpGlobals->curtime + 0.3f;
 }
