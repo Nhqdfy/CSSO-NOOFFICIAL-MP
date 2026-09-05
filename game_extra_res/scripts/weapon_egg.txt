@@ -1,0 +1,107 @@
+WeaponData
+{
+	"MaxPlayerSpeed"			"245"
+	"WeaponType"				"Rifle"
+	"FullAuto"					1
+	"WeaponPrice"				"0"
+	"WeaponArmorRatio"			"1.0"
+	"CrosshairMinDistance"		"8"
+	"CrosshairDeltaDistance"	"3"
+	"Team"						"ANY"
+	"BuiltRightHanded"			"1"
+	"PlayerAnimationExtension"	"ak47"
+	"BuyMenuAnim"				"ct_buymenu_ak47"
+	"BuyMenuAnimT"				"t_buymenu_ak47"
+	"ClassMenuAnim"				"ct_loadout_rifle01_idle"
+	"ClassMenuAnimT"			"t_loadout_rifle01_idle"
+
+	// Weapon characteristics (not used - eggs are projectiles, not hitscan):
+	"Penetration"			"0"
+	"Damage"			"0"
+	"Range"				"8192"
+	"Bullets"			"1"
+	"CycleTime"			"0.13"
+
+	"FlinchVelocityModifierLarge"	"0.3"
+	"FlinchVelocityModifierSmall"	"0.1"
+
+	// Weapon data is loaded by both the Game and Client DLLs.
+	"printname"			"Egg Launcher"
+	"description"		"Full-auto egg launcher. Eggs knock people flying. Totally harmless. Probably."
+	"viewmodel"			"models/weapons/v_rif_ak47.mdl"
+	"playermodel"			"models/weapons/w_rif_ak47.mdl"
+
+	"anim_prefix"			"anim"
+	"bucket"			"0"
+	"bucket_position"		"1"
+
+	"clip_size"					"30"
+	"ammo_primary_reserve_max"	"120"
+
+	"primary_ammo"			"AMMO_TYPE_EGG"
+	"secondary_ammo"		"None"
+
+	"weight"			"7"
+	"item_flags"			"0"
+
+	// Sounds for the weapon.
+	SoundData
+	{
+		"single_shot"		"Weapon_AK47.Single"
+		"nearlyempty"		"Default.NearlyEmpty"
+	}
+
+	// Weapon Sprite data is loaded by the Client DLL.
+	TextureData
+	{
+		"weapon"
+		{
+				"font"		"CSweaponsSmall"
+				"character"	"h"
+		}
+		"weapon_s"
+		{
+				"font"		"CSweapons"
+				"character"	"h"
+		}
+		"ammo"
+		{
+				"font"		"CSTypeDeath"
+				"character"		"O"
+		}
+		"crosshair"
+		{
+				"file"		"sprites/crosshairs"
+				"x"			"0"
+				"y"			"48"
+				"width"		"24"
+				"height"	"24"
+		}
+		"autoaim"
+		{
+				"file"		"sprites/crosshairs"
+				"x"			"0"
+				"y"			"48"
+				"width"		"24"
+				"height"	"24"
+		}
+	}
+	ModelBounds
+	{
+		Viewmodel
+		{
+			Mins	"-4 -10 -14"
+			Maxs	"14 10 0"
+		}
+		World
+		{
+			Mins	"-8 -4 -12"
+			Maxs	"8 4 8"
+		}
+		Addon
+		{
+			Mins	"-2 -2 -2"
+			Maxs	"2 2 2"
+		}
+	}
+}

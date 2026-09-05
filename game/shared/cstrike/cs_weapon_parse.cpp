@@ -130,6 +130,7 @@ WeaponNameInfo s_weaponNameInfo[] =
 	{ WEAPON_TASER,				"weapon_taser" },
 
 	{ WEAPON_HEALTHSHOT,		"weapon_healthshot" },
+	{ WEAPON_EGG,				"weapon_egg" },
 
 	{ ITEM_KEVLAR,				"item_kevlar" },
 	{ ITEM_ASSAULTSUIT,			"item_assaultsuit" },

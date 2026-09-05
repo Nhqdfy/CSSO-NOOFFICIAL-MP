@@ -396,6 +396,8 @@ ConVar ammo_grenade_limit_default( "ammo_grenade_limit_default", "1", FCVAR_REPL
 ConVar ammo_grenade_limit_flashbang( "ammo_grenade_limit_flashbang", "1", FCVAR_REPLICATED );
 ConVar ammo_grenade_limit_total( "ammo_grenade_limit_total", "3", FCVAR_REPLICATED );
 
+ConVar ammo_egg_max( "ammo_egg_max", "120", FCVAR_REPLICATED );
+
 ConVar ammo_item_limit_healthshot( "ammo_item_limit_healthshot", "4", FCVAR_REPLICATED );
 
 #if defined( GAME_DLL )
@@ -8147,6 +8149,7 @@ CAmmoDef* GetAmmoDef()
         ammoDef.AddAmmoType( AMMO_TYPE_SMOKEGRENADE,	0,			TRACER_LINE, 0, 0, "ammo_grenade_limit_default", 0, 0, 0 );
         ammoDef.AddAmmoType( AMMO_TYPE_MOLOTOV,			DMG_BURN,	TRACER_NONE, 0, 0, "ammo_grenade_limit_default", 0, 0, 0 );
         ammoDef.AddAmmoType( AMMO_TYPE_DECOY,			0,			TRACER_NONE, 0, 0, "ammo_grenade_limit_default", 0, 0, 0 );
+        ammoDef.AddAmmoType( AMMO_TYPE_EGG,				0,			TRACER_NONE, 0, 0, "ammo_egg_max", 0, 0, 0 );
         ammoDef.AddAmmoType( AMMO_TYPE_TASERCHARGE,		DMG_SHOCK,	TRACER_BEAM, 0, 0, 0, 0, 0, 0 );
 		ammoDef.AddAmmoType( AMMO_TYPE_HEALTHSHOT,		0,			TRACER_LINE, 0, 0, "ammo_item_limit_healthshot", 0, 0, 0 );
 

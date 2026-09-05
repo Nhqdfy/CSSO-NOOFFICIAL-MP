@@ -125,6 +125,8 @@ enum CSWeaponID
 
 	WEAPON_HEALTHSHOT,
 
+	WEAPON_EGG,
+
 	WEAPON_MAX,		// number of weapons weapon index
 };
 
